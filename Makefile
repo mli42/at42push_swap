@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:24:46 by mli               #+#    #+#              #
-#    Updated: 2021/10/30 15:27:02 by mli              ###   ########.fr        #
+#    Updated: 2021/10/30 15:59:46 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ ifeq ($(f), debug)
 endif
 
 PUSH_SWAP_PATH = push_swap/
-PUSH_SWAP_FILES = main.c
+PUSH_SWAP_FILES = main.c parse.c error.c
 PUSH_SWAP_SRCS = ${addprefix ${PUSH_SWAP_PATH}, ${PUSH_SWAP_FILES}}
 
 SRCS_FILES = ${PUSH_SWAP_SRCS}

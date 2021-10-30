@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/30 16:02:19 by mli              ###   ########.fr       */
+/*   Created: 2021/10/30 15:46:40 by mli               #+#    #+#             */
+/*   Updated: 2021/10/30 16:03:14 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
-{
-	int	**args;
+# include <stdio.h>
+# include <stdlib.h>
 
-	args = ft_parse(argc, &argv[1]);
-	if (args == NULL)
-		ft_exit();
-	printf("%d\n", argc);
-	return (0);
-}
+int		**ft_parse(int argc, char **argv);
+void	ft_exit(void);
+
+#endif
