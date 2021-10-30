@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 17:22:00 by mli               #+#    #+#              #
-#    Updated: 2021/10/30 15:00:16 by mli              ###   ########.fr        #
+#    Updated: 2021/10/30 16:14:27 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ YELLOW = \033[33m
 
 NAME = libft.a
 
-INCL_PATH = ./includes/
+INCL_PATH = includes/
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I ${INCL_PATH}
 
-LIBFT_PATH = ./srcs/
+LIBFT_PATH = srcs/
 LIBFT_SRCS = ft_memset.c ft_bzero.c ft_strlen.c ft_toupper.c ft_tolower.c \
 			 ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c \
 			 ft_strnstr.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
@@ -40,23 +40,27 @@ LIBFT_SRCS = ft_memset.c ft_bzero.c ft_strlen.c ft_toupper.c ft_tolower.c \
 
 SRCS_FILES = ${addprefix ${LIBFT_PATH}, ${LIBFT_SRCS}}
 
-OBJS = ${SRCS_FILES:.c=.o}
+OBJS_PATH = .obj/
+OBJS = ${addprefix ${OBJS_PATH}, ${LIBFT_SRCS:.c=.o}}
 
 all:
 	@printf "${BOLD}Make libft${EOC} : "
 	@make ${NAME}
 
-$(NAME): ${OBJS}
+$(NAME): ${OBJS_PATH} ${OBJS}
 	@echo ""
 	@ar rcs ${NAME} ${OBJS}
 
-.c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+${OBJS_PATH}:
+	@mkdir -p $@
+
+${OBJS_PATH}%.o: ${LIBFT_PATH}%.c ${HEADER_FILES}
+	@${CC} ${CFLAGS} -c $< -o $@
 	@printf "$(YELLOW)▓$(EOC)"
 
 clean:
 	@echo "$(BOLD)$(YELLOW)Remove libft... |$(GREEN)| done$(EOC)"
-	@rm -rf ${OBJS}
+	@rm -rf ${OBJS_PATH}
 
 fclean: clean
 	@echo "$(BOLD)$(YELLOW)Remove all libft|$(GREEN)| done$(EOC)"
