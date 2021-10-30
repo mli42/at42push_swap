@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mli <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 12:15:40 by mli               #+#    #+#             */
-/*   Updated: 2019/10/18 12:08:25 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/30 15:34:29 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_to_trim(char to_test, char const *set)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (set[++i])
@@ -37,7 +37,7 @@ static int	ft_size(char const *s1, char const *set)
 	return (i);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
@@ -53,7 +53,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		i++;
 	if (s1[i])
 		size = ft_size(&s1[i], set);
-	if (!(result = (char *)ft_calloc(size + 1, sizeof(char))))
+	result = (char *)ft_calloc(size + 1, sizeof(char));
+	if (!result)
 		return (NULL);
 	while (s1[i] && j < size)
 		result[j++] = s1[i++];

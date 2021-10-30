@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mli <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 12:02:08 by mli               #+#    #+#             */
-/*   Updated: 2019/10/18 12:07:00 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/30 15:32:27 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	s_len = ft_strlen(s);
-	if ((newcpy = (char *)ft_calloc(len + 1, sizeof(*newcpy))) == NULL)
+	newcpy = (char *)ft_calloc(len + 1, sizeof(*newcpy));
+	if (newcpy == NULL)
 		return (NULL);
 	if (start < s_len)
 		while (i < len && s[start])
