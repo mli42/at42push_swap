@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/30 16:02:19 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/30 17:55:38 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 int	main(int argc, char **argv)
 {
-	int	**args;
+	t_stack	stack;
+	int		i = 0;
 
-	args = ft_parse(argc, &argv[1]);
-	if (args == NULL)
+	if (ft_parse(&stack, argc - 1, &argv[1]) == false)
 		ft_exit();
-	printf("%d\n", argc);
+	printf("My args\n");
+	while (stack.data[i])
+		printf("- %d\n", stack.data[i++]);
 	return (0);
 }

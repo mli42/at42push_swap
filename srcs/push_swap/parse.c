@@ -6,15 +6,16 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 15:52:23 by mli               #+#    #+#             */
-/*   Updated: 2021/10/30 16:02:56 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/30 17:54:05 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "push_swap.h"
 
-int	**ft_parse(int argc, char **argv)
+t_bool	ft_parse(t_stack *stack, int argc, char **argv)
 {
+	(void)stack;
 	(void)argc;
 	(void)argv;
-	return (NULL);
+	return (false);
 }
