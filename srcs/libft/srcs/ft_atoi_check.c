@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atoi_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:46:40 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 13:08:43 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 16:11:25 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 16:13:14 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../includes/libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/includes/libft.h"
-
-// Bool
-
-typedef enum e_bool {
-	false,
-	true
-}	t_bool;
-
-typedef struct s_stack
+/*
+ * Returns 0 on error, otherwise 1
+ * The number isn't parsed
+ */
+int	ft_atoi_check(const char *const str)
 {
-	int	*data;
-	int	sep;
-	int	size;
-}	t_stack;
+	int	i;
 
-t_bool	ft_parse(t_stack *stack, int argc, char **argv);
-void	ft_exit(void);
-
-#endif
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (ft_isdigit(str[i]))
+		i++;
+	if (str[i] != '\0' && !ft_isspace(str[i]))
+		return (0);
+	return (1);
+}

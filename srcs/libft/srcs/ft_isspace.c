@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:46:40 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 13:08:43 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 14:28:13 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 14:30:46 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/includes/libft.h"
-
-// Bool
-
-typedef enum e_bool {
-	false,
-	true
-}	t_bool;
-
-typedef struct s_stack
+int	ft_isspace(const int c)
 {
-	int	*data;
-	int	sep;
-	int	size;
-}	t_stack;
-
-t_bool	ft_parse(t_stack *stack, int argc, char **argv);
-void	ft_exit(void);
-
-#endif
+	while (c == ' ' || c == '\t' || c == '\n' ||
+		c == '\v' || c == '\f' || c == '\r')
+		return (1);
+	return (0);
+}

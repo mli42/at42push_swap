@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:34:27 by mli               #+#    #+#             */
-/*   Updated: 2021/10/30 15:36:57 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/31 16:14:05 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_isspace(int c);
 
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -87,7 +88,9 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 
 void			ft_free(void **ptr);
-int				ft_atoi_ptr(const char *str, int *i);
+int				ft_atoi_ptr(const char **const str);
+int				ft_atoi_bool(const char *str, int *res_ptr);
+int				ft_atoi_check(const char *const str);
 int				ft_nbrlen_base(long int nb, int base_len);
 int				ft_nbrlen(long int nb);
 char			*ft_itoa_lbase(const char *base, long int nbr);
