@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_top_end.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 22:48:31 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 21:24:13 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 21:43:02 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
+#include "../common_static.h"
 
-int	main(int argc, const char **argv)
+int	*get_top_a(t_stack *stack)
 {
-	t_stack	stack;
+	return (stack->data + (stack->sep - 1));
+}
 
-	ft_bzero(&stack, sizeof(stack));
-	if (argc < 2 || ft_parse(&stack, &argv[1]) == false)
-		ft_exit();
-	print_stack(&stack);
-	ft_free((void **)&stack.data);
-	return (0);
+int	*get_top_b(t_stack *stack)
+{
+	return (stack->data + stack->sep);
+}
+
+int	*get_end_a(t_stack *stack)
+{
+	return (stack->data - 1);
+}
+
+int	*get_end_b(t_stack *stack)
+{
+	return (stack->data + stack->size);
 }

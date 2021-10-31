@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   getHelper.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 22:48:31 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 21:10:11 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 22:24:50 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
+#include "../common_static.h"
 
-int	main(int argc, const char **argv)
+const t_helper	*get_helper(t_stack_type type)
 {
-	t_stack	stack;
+	static const t_helper	helper[2] = {
+		{STACK_A, STACK_DIR_A, get_top_a, get_end_a, get_size_a, get_edge_a},
+		{STACK_B, STACK_DIR_B, get_top_b, get_end_b, get_size_b, get_edge_b},
+	};
 
-	ft_bzero(&stack, sizeof(stack));
-	if (argc < 2 || ft_parse(&stack, &argv[1]) == false)
-		ft_exit();
-	print_stack(&stack);
-	ft_free((void **)&stack.data);
-	return (0);
+	return (&helper[type]);
 }

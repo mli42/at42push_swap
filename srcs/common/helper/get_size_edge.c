@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_size_edge.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 22:48:31 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 21:31:09 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 21:56:32 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
+#include "../common_static.h"
 
-int	main(int argc, const char **argv)
+int	get_size_a(t_stack *stack)
 {
-	t_stack	stack;
+	return (stack->sep);
+}
 
-	ft_bzero(&stack, sizeof(stack));
-	if (argc < 2 || ft_parse(&stack, &argv[1]) == false)
-		ft_exit();
-	print_stack(&stack);
-	ft_free((void **)&stack.data);
-	return (0);
+int	get_size_b(t_stack *stack)
+{
+	return (stack->size - stack->sep);
+}
+
+/*
+ * Returns the index of end (for stack a)
+ */
+int	get_edge_a(t_stack *stack)
+{
+	(void)stack;
+	return (-1);
+}
+
+/*
+ * Returns the index of end (for stack b)
+ */
+int	get_edge_b(t_stack *stack)
+{
+	return (stack->size);
 }

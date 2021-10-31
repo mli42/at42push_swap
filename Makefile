@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:24:46 by mli               #+#    #+#              #
-#    Updated: 2021/10/31 17:54:00 by mli              ###   ########.fr        #
+#    Updated: 2021/10/31 21:55:43 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,15 +38,32 @@ PUSH_SWAP_FILES = main.c
 PUSH_SWAP_SRCS = ${addprefix ${PUSH_SWAP_PATH}, ${PUSH_SWAP_FILES}}
 
 COMMON_PATH = common/
-COMMON_FILES = printStack.c parse.c error.c parse_count.c
+COMMON_FILES = printStack.c parse.c error.c parse_count.c ft_iswap.c
 COMMON_SRCS = ${addprefix ${COMMON_PATH}, ${COMMON_FILES}}
 
-SRCS_FILES = ${PUSH_SWAP_SRCS} ${COMMON_SRCS}
+HELPER_PATH = ${COMMON_PATH}/helper/
+HELPER_FILES = getHelper.c get_top_end.c get_size_edge.c
+HELPER_SRCS = ${addprefix ${HELPER_PATH}, ${HELPER_FILES}}
+
+OPERATORS_PATH = ${COMMON_PATH}/operators/
+OPERATORS_FILES = operator_s.c operator_p.c operator_r.c operator_rr.c
+OPERATORS_SRCS = ${addprefix ${OPERATORS_PATH}, ${OPERATORS_FILES}}
+
+SRCS_FILES = ${addprefix , \
+	${PUSH_SWAP_SRCS} \
+	${COMMON_SRCS} \
+	${HELPER_SRCS} \
+	${OPERATORS_SRCS} \
+	}
 
 OBJS_PATH = .obj/
 OBJS = ${addprefix ${OBJS_PATH}, ${SRCS_FILES:.c=.o}}
-OBJS_PATHS = ${OBJS_PATH} \
-	${addprefix ${OBJS_PATH}, ${PUSH_SWAP_PATH} ${COMMON_PATH}}
+OBJS_PATHS = ${addprefix ${OBJS_PATH}, \
+	${PUSH_SWAP_PATH} \
+	${COMMON_PATH} \
+	${HELPER_PATH} \
+	${OPERATORS_PATH} \
+	}
 
 all: ${LIBS}
 	@printf "${BOLD}Make ${PS_NAME}${EOC}: "
