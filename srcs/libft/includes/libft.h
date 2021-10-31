@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:34:27 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 16:14:05 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/31 17:10:39 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			ft_free(void **ptr);
 int				ft_atoi_ptr(const char **const str);
 int				ft_atoi_bool(const char *str, int *res_ptr);
 int				ft_atoi_check(const char *const str);
+int				ft_atoi_checkptr(const char **const str);
 int				ft_nbrlen_base(long int nb, int base_len);
 int				ft_nbrlen(long int nb);
 char			*ft_itoa_lbase(const char *base, long int nbr);

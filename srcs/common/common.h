@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:55:57 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 18:08:25 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 16:25:58 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 17:35:05 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
+#ifndef COMMON_H
+# define COMMON_H
 
-int	main(int argc, const char **argv)
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include "../libft/includes/libft.h"
+
+// Bool
+
+typedef enum e_bool {
+	false,
+	true
+}	t_bool;
+
+typedef struct s_stack
 {
-	t_stack	stack;
+	int	*data;
+	int	sep;
+	int	size;
+}	t_stack;
 
-	ft_bzero(&stack, sizeof(stack));
-	if (argc < 2 || ft_parse(&stack, &argv[1]) == false)
-		ft_exit();
-	print_stack(stack);
-	ft_free((void **)&stack.data);
-	return (0);
-}
+void	print_stack(t_stack stack);
+t_bool	ft_parse(t_stack *stack, const char **argv);
+void	ft_exit(void);
+
+#endif

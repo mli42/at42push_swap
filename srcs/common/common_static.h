@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   common_static.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 15:59:53 by mli               #+#    #+#             */
-/*   Updated: 2021/10/30 16:01:20 by mli              ###   ########.fr       */
+/*   Created: 2021/10/31 17:26:40 by mli               #+#    #+#             */
+/*   Updated: 2021/10/31 17:34:55 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef COMMON_STATIC_H
+# define COMMON_STATIC_H
 
-void	ft_exit(void)
-{
-	printf("Error\n");
-	exit(1);
-}
+# include "common.h"
+
+int		parse_count(const char **argv);
+
+#endif
+

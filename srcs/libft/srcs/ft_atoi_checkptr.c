@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_check.c                                    :+:      :+:    :+:   */
+/*   ft_atoi_checkptr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 16:11:25 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 17:45:19 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/31 17:42:09 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,24 @@
  * The number isn't parsed
  * Move the pointer
  */
-int	ft_atoi_check(const char *const str)
+int	ft_atoi_checkptr(const char **const str)
 {
-	const char *tmp = str;
+	int has_number;
 
-	return (ft_atoi_checkptr(&tmp));
+	has_number = 0;
+	while (ft_isspace(**str))
+		(*str)++;
+	if (**str == '+' || **str == '-')
+		(*str)++;
+	while (ft_isdigit(**str))
+	{
+		if (has_number == 0)
+			has_number = 1;
+		(*str)++;
+	}
+	if (**str != '\0' && !ft_isspace(**str))
+		return (-1);
+	if (has_number == 0)
+		return (0);
+	return (1);
 }
