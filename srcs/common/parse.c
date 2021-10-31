@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 15:52:23 by mli               #+#    #+#             */
-/*   Updated: 2021/10/31 18:44:25 by mli              ###   ########.fr       */
+/*   Updated: 2021/10/31 18:57:37 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static void	populate(t_stack *stack, const char **argv)
 	int	j;
 
 	i = -1;
-	j = 0;
+	j = stack->size;
 	while (argv[++i])
 	{
 		while (*argv[i])
 		{
 			if (ft_atoi_check(argv[i]) != 1)
 				break ;
-			stack->data[j++] = ft_atoi_ptr(&argv[i]);
+			stack->data[--j] = ft_atoi_ptr(&argv[i]);
 		}
 	}
 }
