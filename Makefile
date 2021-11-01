@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:24:46 by mli               #+#    #+#              #
-#    Updated: 2021/11/01 12:06:46 by mli              ###   ########.fr        #
+#    Updated: 2021/11/01 17:02:05 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIBS = ${addprefix ${LIBFT_PATH}, ${LIBFT}}
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -MMD
 
 ifeq ($(f), debug)
 	CFLAGS += -fsanitize=address -g3
@@ -38,7 +39,8 @@ PUSH_SWAP_FILES = main.c
 PUSH_SWAP_SRCS = ${addprefix ${PUSH_SWAP_PATH}, ${PUSH_SWAP_FILES}}
 
 COMMON_PATH = common/
-COMMON_FILES = printStack.c parse.c error.c parse_count.c ft_iswap.c
+COMMON_FILES = printStack.c parse.c error.c parse_count.c ft_iswap.c \
+	is_integer.c
 COMMON_SRCS = ${addprefix ${COMMON_PATH}, ${COMMON_FILES}}
 
 HELPER_PATH = ${COMMON_PATH}/helper/
@@ -65,19 +67,21 @@ OBJS_PATHS = ${addprefix ${OBJS_PATH}, \
 	${OPERATORS_PATH} \
 	}
 
+MMD_FILES = ${OBJS:.o=.d}
+
 all:
 	@make -C ${LIBFT_PATH}
 	@printf "${BOLD}Make ${PS_NAME}${EOC}: "
 	@make ${PS_NAME}
 
-$(PS_NAME): ${LIBS} ${OBJS_PATHS} ${OBJS} ${HEADER_FILES}
+$(PS_NAME): ${LIBS} ${OBJS_PATHS} ${OBJS}
 	@echo ""
 	@${CC} ${CFLAGS} -o $@ ${OBJS} -L ${LIBFT_PATH} -lft
 
 ${OBJS_PATHS}:
 	@mkdir -p $@
 
-${OBJS_PATH}%.o: ${SRCS_PATH}%.c ${HEADER_FILES}
+${OBJS_PATH}%.o: ${SRCS_PATH}%.c
 	@${CC} ${CFLAGS} -c $< -o $@
 	@printf "$(GREEN)▓$(EOC)"
 
@@ -94,5 +98,7 @@ fclean: clean
 	@make -C ${LIBFT_PATH} fclean
 
 re: fclean all
+
+-include ${MMD_FILES}
 
 .PHONY: all clean fclean re
