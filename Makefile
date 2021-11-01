@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:24:46 by mli               #+#    #+#              #
-#    Updated: 2021/10/31 21:55:43 by mli              ###   ########.fr        #
+#    Updated: 2021/11/01 12:06:46 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ OBJS_PATHS = ${addprefix ${OBJS_PATH}, \
 	${OPERATORS_PATH} \
 	}
 
-all: ${LIBS}
+all:
+	@make -C ${LIBFT_PATH}
 	@printf "${BOLD}Make ${PS_NAME}${EOC}: "
 	@make ${PS_NAME}
 
